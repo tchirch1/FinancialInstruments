@@ -20,7 +20,7 @@ public class Option implements Valuable<OptionPricer> {
     private final Stock<PassThruValuer> underlierStock;
     private final double strike;
 
-    public Option(String type, double timeToMaturity, Stock<PassThruValuer> underlierStock, double strike) {
+    public Option(String type, double timeToMaturity, Stock underlierStock, double strike) {
         this.type = type;
         this.timeToMaturity = timeToMaturity;
         this.underlierStock = underlierStock;

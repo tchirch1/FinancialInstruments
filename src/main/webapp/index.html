@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html>
+<head>
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico"/>
+    <link rel="icon" type="image/ico" href="images/favicon.ico">
+    <link rel="stylesheet" href="css/todo.css">
+</head>
+<body>
+
+<div class="container-fluid" ng-app="utamatisiApp">
+
+    <div class="row-fluid">
+
+        <div class="span2">
+            <div ng-controller="MenuCtrl">
+                <div menu></div>
+            </div>
+        </div>
+
+        <div class="span10">
+            <div ng-view></div>
+        </div>
+        <a href="http://www.facebook.com/titus.chirchir12">Follow Me On Facebook</a>
+
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular-resource.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular-route.min.js"></script>
+<script src="js/lib/ui-bootstrap-tpls-0.5.0.js"></script>
+<script src="js/menu.js"></script>
+<script src="js/persons.js"></script>
+<script src="js/todos.js"></script>
+<script src="js/index.js"></script>
+<script src="js/trees.js"></script>
+</body>
+</html>

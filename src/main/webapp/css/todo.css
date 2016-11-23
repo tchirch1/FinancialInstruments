@@ -1,0 +1,11 @@
+.done-true-false {
+    color: green;
+}
+
+.done-false-true {
+    color: #f0ad4e;
+}
+
+.done-false-false {
+    color: red;
+}
