@@ -52,6 +52,6 @@ public class IssuedEquityStock<V extends PassThruValuer> implements Stock<V> {
 
     @Override
     public double value(V valuer) {
-        return valuer.valueOf(this.value());
+        return valuer.valueOf(Double.valueOf(this.value()));
     }
 }
