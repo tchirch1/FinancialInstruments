@@ -16,12 +16,11 @@ angular.module('stockstream', ['ngResource', 'ui.bootstrap'], function ($dialogP
         $scope.getData = function () {
 
             var url = "http://query.yahooapis.com/v1/public/yql";
-            var array =",'GS','AAPL'";
             var url2 = "http://localhost:9123/stocks";
             var symbol = $scope.symbol;
             console.log($scope.symbol);
 
-            var data = encodeURIComponent("select * from yahoo.finance.quotes where symbol in ('" + $scope.symbol + array+'TNXP','AMD','')");
+            var data = encodeURIComponent("select * from yahoo.finance.quotes where symbol in ('" + $scope.symbol + "','GS','AAPL','TNXP','AMD','D')");
 
             /*
              Build the string to use with with $http get to retrieve JSON data from Yahoo Finance API
