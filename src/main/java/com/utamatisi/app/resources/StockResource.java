@@ -1,7 +1,7 @@
 package com.utamatisi.app.resources;
 
-import com.utamatisi.app.db.TodoDAO;
-import com.utamatisi.app.models.domain.Todo;
+import com.utamatisi.app.db.StockDAO;
+import com.utamatisi.app.models.domain.Stock;
 import io.dropwizard.hibernate.UnitOfWork;
 import io.dropwizard.jersey.params.LongParam;
 
@@ -15,33 +15,32 @@ import java.util.List;
  * Date Created 2/27/2016.
  * Package: ${PACKAGE}
  */
-@Path("/todos")
+@Path("/stocks")
 @Produces(MediaType.APPLICATION_JSON)
-public class TodoResource {
-    private final TodoDAO todoDAO;
+public class StockResource {
+    private final StockDAO stockDAO;
 
-    public TodoResource(TodoDAO todoDAO) {
-        this.todoDAO = todoDAO;
+    public StockResource(StockDAO stockDAO) {
+        this.stockDAO = stockDAO;
     }
 
     @GET
     @UnitOfWork
-    public List<Todo> listTodos() {
-        return todoDAO.findAll();
+    public List<Stock> listStocks() {
+        return stockDAO.findAll();
     }
 
     @POST
     @UnitOfWork
-    public Todo createTodo(Todo todo) {
-        return todoDAO.create(todo);
+    public Stock createStock(Stock stock) {
+        return stockDAO.create(stock);
     }
-
     @DELETE
     @Produces(MediaType.APPLICATION_JSON)
     @UnitOfWork
-    public Response deleteTodo(@QueryParam("id")LongParam id)
+    public Response deleteStock(@QueryParam("id")LongParam id)
     {
-        todoDAO.delete(id.get());
+        stockDAO.delete(id.get());
         return Response.ok().build();
     }
 

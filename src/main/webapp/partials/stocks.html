@@ -1,0 +1,35 @@
+<h2>Stocks</h2>
+
+<div ng-controller="StockCtrl">
+
+    <form class="form-inline" ng-submit="saveStock(stockForm.stock)">
+        <input type="text" class="span3" ng-model="stockForm.stock.companyName" size="30" placeholder="company name">
+        <input type="text" class="span3" ng-model="stockForm.stock.symbol" size="30" placeholder="stock symbol">
+        <input type="text" class="span3" ng-model="stockForm.stock.value" size="30" placeholder="current value">
+        <input class="btn-primary" type="submit" value="Save">
+        <button type="button" class="btn" ng-click="clearForm()">Clear form</button>
+    </form>
+    <div class="control-group">
+        <input class="span4" type="text" ng-model="searchText.$" placeholder="Filter the list..">
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th style="width: 100px">Actions</th>
+            <th style="width: 200px">Company Name</th>
+            <th style="width: 300px">Symbol</th>
+            <th style="width: 400px">Value</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="stock in stockList | orderBy:'id' | filter:searchText">
+            <td><button class="btn" ng-click="editStock(stock)"><i class="icon-edit"></i></button>
+                <button class="btn" ng-click="deleteStock(stock)"><i class="icon-trash"></i></button>
+            </td>
+            <td style="width: 200px">{{stock.companyName}}</td>
+            <td style="width: 300px">{{stock.symbol}}</td>
+            <td style="width: 300px">{{stock.value}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
