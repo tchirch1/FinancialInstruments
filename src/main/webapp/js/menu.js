@@ -2,7 +2,6 @@ var sidebarMenu = angular.module('sidebarMenu', ['ngRoute'])
     .config(function ($locationProvider, $routeProvider) {
         $routeProvider
             .when('/', {templateUrl: '/partials/welcome.html'})
-            .when('/persons', {templateUrl: '/partials/persons.html'})
             .when('/todos', {templateUrl: '/partials/todos.html'})
             .when('/stocks', {templateUrl: '/partials/stocks.html'})
             .otherwise({redirectTo: '/'})
@@ -36,11 +35,6 @@ sidebarMenu.factory('Menu', function () {
             class: "",
             href: "/",
             name: "Home"
-        },
-        {
-            class: "",
-            href: "/#/persons",
-            name: "Person View / Edit"
         },
         {
             class: "",

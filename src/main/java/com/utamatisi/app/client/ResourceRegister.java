@@ -44,12 +44,8 @@ public class ResourceRegister {
 
     public static void registerHibernateResources(JerseyEnvironment jersey, HibernateBundle<DropwizardConfiguration> hibernateBundle) {
         SessionFactory sessionFactory = hibernateBundle.getSessionFactory();
-        final PersonDAO dao = new PersonDAO(sessionFactory);
         final TodoDAO todoDAO = new TodoDAO(sessionFactory);
         final StockDAO stockDAO = new StockDAO(sessionFactory);
-        jersey.register(new PeopleResource(dao));
-        jersey.register(new AccountResource(new AccountDAO(sessionFactory)));
-        jersey.register(new PersonResource(dao));
         jersey.register(new TodoResource(todoDAO));
         jersey.register(new StockResource(stockDAO));
     }

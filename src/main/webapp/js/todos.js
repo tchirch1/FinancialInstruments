@@ -66,6 +66,9 @@ function TodoCtrl($scope, TodosResource, $dialog) {
             $scope.todoList = TodosResource.query();
         });
     };
+    $scope.clearForm = function () {
+        $scope.todoForm.todo = {};
+    };
     $scope.editTodo = function (todo) {
         $scope.todoForm.todo = todo
     };

@@ -28,6 +28,9 @@ function StockCtrl($scope, StocksResource, $dialog) {
             });
         }
     };
+    $scope.clearForm = function () {
+        $scope.stockForm.stock = {}
+    };
     $scope.editStock = function (stock) {
         $scope.stockForm.stock = stock;
     }
