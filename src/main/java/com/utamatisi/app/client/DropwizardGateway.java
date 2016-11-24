@@ -27,7 +27,7 @@ public class DropwizardGateway extends Application<DropwizardConfiguration> {
     public static final String APP_DIR = "src/main/webapp/";
     public static final String WEB_XML_LOCATION = "/WEB-INF/web.xml";
     private final HibernateBundle<DropwizardConfiguration> hibernateBundle =
-            new HibernateBundle<DropwizardConfiguration>(Todo.class, Stock.class, BusinessDateMilestonedImpl.class) {
+            new HibernateBundle<DropwizardConfiguration>(Todo.class, Stock.class, Portfolio.class, BusinessDateMilestonedImpl.class) {
                 @Override
                 public DataSourceFactory getDataSourceFactory(DropwizardConfiguration configuration) {
                     return configuration.getDataSourceFactory();

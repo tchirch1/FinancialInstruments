@@ -1,1 +1,1 @@
-angular.module('utamatisiApp', ['sidebarMenu', 'stocks', 'todos']);
+angular.module('utamatisiApp', ['sidebarMenu', 'stocks', 'todos', 'portfolios']);

@@ -4,6 +4,7 @@ var sidebarMenu = angular.module('sidebarMenu', ['ngRoute'])
             .when('/', {templateUrl: '/partials/welcome.html'})
             .when('/todos', {templateUrl: '/partials/todos.html'})
             .when('/stocks', {templateUrl: '/partials/stocks.html'})
+            .when('/portfolios', {templateUrl: '/partials/portfolios.html'})
             .otherwise({redirectTo: '/'})
     });
 
@@ -45,6 +46,11 @@ sidebarMenu.factory('Menu', function () {
             class: "",
             href: "/#/stocks",
             name: "Stocks"
+        },
+        {
+            class: "",
+            href: "/#/portfolios",
+            name: "Portfolios"
         }
     ];
     return Menu;
