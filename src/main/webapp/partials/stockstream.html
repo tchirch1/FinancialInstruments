@@ -1,0 +1,40 @@
+<h2>Stocks</h2>
+
+<div ng-controller="StockStreamCtrl">
+
+    <div class="form-group">
+        <label>Ticker Symbol</label>
+        <input type="text" placeholder="Enter Symbol" class="form-control" name="symbol" ng-model="symbol" />
+    </div>
+    <div>
+        <button class="btn btn-primary" ng-click="getData()">Get Price</button>
+    </div>
+   <!-- <form id="form1"  method="post">
+        <br/>
+        {{result.Name}} <br/>
+        {{result.Exchange}} <br/>
+        {{result.MarketCap}} <br/>
+        {{result.LastPrice}} <br/>
+        {{result.PercentChange}} <br/>
+        {{result.YearRange}} <br/>
+        {{result.DividendShare}} <br/>
+        {{result.EarningsShare}} <br/>
+        {{result.LastTradeDate}} <br/>
+    </form>-->
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th style="width: 200px">Company Name</th>
+            <th style="width: 300px">Symbol</th>
+            <th style="width: 400px">Last Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="stream in result">
+            <td style="width: 200px">{{stream.Name}}</td>
+            <td style="width: 300px">{{stream.symbol}}</td>
+            <td style="width: 300px">{{stream.LastTradePriceOnly}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
