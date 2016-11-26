@@ -6,6 +6,8 @@ var sidebarMenu = angular.module('sidebarMenu', ['ngRoute'])
             .when('/stocks', {templateUrl: '/partials/stocks.html'})
             .when('/portfolios', {templateUrl: '/partials/portfolios.html'})
             .when('/stockstream', {templateUrl: '/partials/stockstream.html'})
+            .when('/monte', {templateUrl: '/partials/monte.html'})
+            .when('/graphs', {templateUrl: '/partials/charts.html'})
             .otherwise({redirectTo: '/'})
     });
 
@@ -57,6 +59,16 @@ sidebarMenu.factory('Menu', function () {
             class: "",
             href: "/#/stockstream",
             name: "Stock Stream"
+        },
+        {
+            class: "",
+            href: "/#/monte",
+            name: "Monte Carlo Simulation"
+        },
+        {
+            class: "",
+            href: "/#/graphs",
+            name: "Graphs"
         }
     ];
     return Menu;

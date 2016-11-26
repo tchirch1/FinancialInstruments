@@ -44,6 +44,7 @@ public class ResourceRegister {
         jersey.register(new TodoResource(new TodoDAO(sessionFactory)));
         jersey.register(new StockResource(new StockDAO(sessionFactory)));
         jersey.register(new PortfolioResource(new PortfolioDAO(sessionFactory)));
+        jersey.register(new MonteCarloResource());
     }
     public static void registerCors(Environment environment) {
         final FilterRegistration.Dynamic cors = environment.servlets().addFilter("CORS", CrossOriginFilter.class);

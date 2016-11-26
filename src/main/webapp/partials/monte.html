@@ -1,0 +1,21 @@
+<h1>Monte Carlo Simulation</h1>
+
+<div ng-controller="MonteCtrl">
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th>Time</th>
+            <th ng-repeat="mont in monteList[0] track by $index">
+                {{mont | number:4}}
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="mont in monteList" ng-if="$index >= 1">
+                <td>Sim {{$index}}</td>
+                <td ng-repeat="mon in mont track by $index">{{mon | number : 4}}</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+</div>
