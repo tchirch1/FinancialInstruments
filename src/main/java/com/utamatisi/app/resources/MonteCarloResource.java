@@ -1,15 +1,12 @@
 package com.utamatisi.app.resources;
 
-import com.utamatisi.app.db.TodoDAO;
-import com.utamatisi.app.models.domain.Todo;
+import com.utamatisi.app.models.MonteCarlo;
 import controller.UsefulFunctions;
 import io.dropwizard.hibernate.UnitOfWork;
-import io.dropwizard.jersey.params.LongParam;
 import org.eclipse.collections.impl.list.mutable.FastList;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 import java.util.List;
 
 /**
@@ -26,13 +23,12 @@ public class MonteCarloResource {
 
     @GET
     @UnitOfWork
-    public List<List<Double>> monte() {
+    @Path("/{size}/{mValue}")
+    public MonteCarlo monteMans(@PathParam("size") int N,
+                                @PathParam("mValue") int M,
+                                @QueryParam("time") double time) {
         List<List<Double>> things = FastList.newList();
-        double time = 1/12.0;
-        int N = 30;
-        things.add(timeBand(time, N));
-        int M = 200;
-        for (int i=0;i<=M;i++) {
+        for (int i=0;i<M;i++) {
             final List<Double> vals = UsefulFunctions.randomGaussian(N);
             vals.set(0, 20.0);
             for (int j=0;j<N-1;j++) {
@@ -40,7 +36,7 @@ public class MonteCarloResource {
             }
             things.add(vals);
         }
-        return things;
+        return new MonteCarlo(timeBand(time, N), things);
     }
     public static List<Double> timeBand(double T, int N)
     {

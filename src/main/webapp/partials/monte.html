@@ -1,6 +1,11 @@
 <h1>Monte Carlo Simulation</h1>
 
 <div ng-controller="MonteCtrl">
+    <form class="form-inline" ng-submit="getMontes()">
+        <input type="text" class="span3" ng-model="nValue" size="30" placeholder="N">
+        <input type="text" class="span3" ng-model="mValue" size="30" placeholder="M">
+        <input class="btn-primary" type="submit" value="Generate Grid">
+    </form>
     <table class="table table-bordered table-striped">
         <thead>
         <tr>

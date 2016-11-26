@@ -1,7 +1,16 @@
 angular.module('AngularChart', ['ngResource', 'ui.bootstrap'], function ($dialogProvider) {
     $dialogProvider.options({backdropClick: false, dialogFade: true});
-}).factory('MonteResourcer', function ($resource) {
-    return $resource('/api/montes', {}, {});
+}).controller('MainCtrl', function($scope, $http) {
+    var genericUrl = 'http://localhost:9000/api/montes/';
+    $scope.getChart = function () {
+        var url = genericUrl + $scope.nValue +'/'+$scope.mValue+'?time='+$scope.time;
+        $scope.N = $scope.nValue;
+        $scope.M = $scope.mValue;
+        $http.get(url).then(function (response) {
+            $scope.lineChartXData = toArray(response.data.timeSeries);
+            $scope.lineChartYData = add2D(response.data.simulation);
+        });
+    }
 })
     .directive('chart', function () {
         return {
@@ -28,14 +37,13 @@ angular.module('AngularChart', ['ngResource', 'ui.bootstrap'], function ($dialog
                         x: -20
                     },
                     xAxis: {
-                        //categories:['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun','Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-                        tickInterval: 1,
+                        tickInterval: 0.5,
                         title: {
                             text: attrs.xname
                         }
                     },
                     plotOptions: {
-                        lineWidth: 0.5
+                        lineWidth: 0.2
                     },
                     yAxis: {
                         title: {
@@ -56,8 +64,7 @@ angular.module('AngularChart', ['ngResource', 'ui.bootstrap'], function ($dialog
                         verticalAlign: 'top',
                         x: -10,
                         y: 100,
-                        borderWidth: 0,
-                        hide: true
+                        borderWidth: 0
                     }
                 };
 
@@ -80,26 +87,17 @@ angular.module('AngularChart', ['ngResource', 'ui.bootstrap'], function ($dialog
         }
 
     });
-function MainCtrl($scope, MonteResourcer) {
-    $scope.monteList = MonteResourcer.query();
-    $scope.monteList.$promise.then(function (result) {
-        $scope.monteList = result;
-        console.log($scope.monteList);
-        $scope.lineChartYData = add2D(180, result);
-        $scope.lineChartXData = toArray(result[0]);
-    });
-}
 function toArray(arr) {
     var arr2 = [];
-    for (var i = 0; i < 30; i++) {
-        arr2.push(arr[i])
+    for (var i = 0; i < arr.length; i++) {
+        arr2.push(Math.round(arr[i]*100)/100);
     }
     return arr2;
 }
-function add2D(count, result) {
+function add2D(result) {
     var arr = [];
-    for (var i = 1; i < count; i++) {
-        arr.push({"name": "Sample " + i, "data": toArray(result[i])});
+    for (var i = 0; i < result.length; i++) {
+        arr.push({"name": "Sim " + i, "data": toArray(result[i], result[i].length)});
     }
     return arr;
 }

@@ -1,9 +1,15 @@
 <div ng-controller="MainCtrl">
-<chart title="Cookie Chart"
+    <form class="form-inline" ng-submit="getChart()">
+        <label>Params</label>
+        <input type="text" class="span3" ng-model="nValue" size="30" placeholder="N">
+        <input type="text" class="span3" ng-model="mValue" size="30" placeholder="M">
+        <input type="text" class="span3" ng-model="time" size="30" placeholder="Time">
+        <input class="btn-primary" type="submit" value="Generate Graph">
+    </form>
+<chart title="Monte Carlo Simulation for VTO Stock"
        xData="lineChartXData"
        yData="lineChartYData"
-       xName="Month"
-       yName="Bigness"
-       subtitle="Titus' & Rachel's Data Graph about Cookies"></chart>
-
+       xName="Time"
+       yName="Stock Price"
+       subtitle="Wiggles"></chart>
 </div>
