@@ -1,6 +1,6 @@
 angular.module('AngularChart', ['ngResource', 'ui.bootstrap'], function ($dialogProvider) {
     $dialogProvider.options({backdropClick: false, dialogFade: true});
-}).controller('MainCtrl', function($scope, $http) {
+}).controller('MonteCarloCtrl', function($scope, $http) {
     var genericUrl = 'http://localhost:9000/api/montes';
     $scope.getChart = function () {
         var url = genericUrl + '?s0='+$scope.s0+'&size='+$scope.nValue +'&mValue='+$scope.mValue+'&time='+$scope.time;
