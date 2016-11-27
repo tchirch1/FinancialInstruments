@@ -1,24 +1,26 @@
 <h1>Monte Carlo Simulation</h1>
 
-<div ng-controller="MonteCtrl">
-    <form class="form-inline" ng-submit="getMontes()">
+<div ng-controller="MainCtrl">
+    <form class="form-inline" ng-submit="getChart()">
+        <input type="text" class="span3" ng-model="Spot" size="30" placeholder="s0">
         <input type="text" class="span3" ng-model="nValue" size="30" placeholder="N">
         <input type="text" class="span3" ng-model="mValue" size="30" placeholder="M">
+        <input type="text" class="span3" ng-model="time" size="30" placeholder="T">
         <input class="btn-primary" type="submit" value="Generate Grid">
     </form>
     <table class="table table-bordered table-striped">
         <thead>
         <tr>
             <th>Time</th>
-            <th ng-repeat="mont in monteList[0] track by $index">
+            <th ng-repeat="mont in lineChartXData track by $index">
                 {{mont | number:4}}
             </th>
         </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="mont in monteList" ng-if="$index >= 1">
-                <td>Sim {{$index}}</td>
-                <td ng-repeat="mon in mont track by $index">{{mon | number : 4}}</td>
+            <tr ng-repeat="montee in lineChartYData">
+                <td>{{montee.name}}</td>
+                <td ng-repeat="m in montee.data track by $index">{{m | number : 4}}</td>
             </tr>
         </tbody>
     </table>

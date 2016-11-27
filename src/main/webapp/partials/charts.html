@@ -1,9 +1,10 @@
 <div ng-controller="MainCtrl">
     <form class="form-inline" ng-submit="getChart()">
         <label>Params</label>
-        <input type="text" class="span3" ng-model="nValue" size="30" placeholder="N">
-        <input type="text" class="span3" ng-model="mValue" size="30" placeholder="M">
-        <input type="text" class="span3" ng-model="time" size="30" placeholder="Time">
+        <input type="text" class="span2" ng-model="s0" size="30" placeholder="Spot">
+        <input type="text" class="span2" ng-model="nValue" size="30" placeholder="N">
+        <input type="text" class="span2" ng-model="mValue" size="30" placeholder="M">
+        <input type="text" class="span2" ng-model="time" size="30" placeholder="Time">
         <input class="btn-primary" type="submit" value="Generate Graph">
     </form>
 <chart title="Monte Carlo Simulation for VTO Stock"

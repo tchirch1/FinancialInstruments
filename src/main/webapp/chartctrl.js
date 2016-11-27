@@ -1,11 +1,9 @@
 angular.module('AngularChart', ['ngResource', 'ui.bootstrap'], function ($dialogProvider) {
     $dialogProvider.options({backdropClick: false, dialogFade: true});
 }).controller('MainCtrl', function($scope, $http) {
-    var genericUrl = 'http://localhost:9000/api/montes/';
+    var genericUrl = 'http://localhost:9000/api/montes';
     $scope.getChart = function () {
-        var url = genericUrl + $scope.nValue +'/'+$scope.mValue+'?time='+$scope.time;
-        $scope.N = $scope.nValue;
-        $scope.M = $scope.mValue;
+        var url = genericUrl + '?s0='+$scope.s0+'&size='+$scope.nValue +'&mValue='+$scope.mValue+'&time='+$scope.time;
         $http.get(url).then(function (response) {
             $scope.lineChartXData = toArray(response.data.timeSeries);
             $scope.lineChartYData = add2D(response.data.simulation);
@@ -97,7 +95,7 @@ function toArray(arr) {
 function add2D(result) {
     var arr = [];
     for (var i = 0; i < result.length; i++) {
-        arr.push({"name": "Sim " + i, "data": toArray(result[i], result[i].length)});
+        arr.push({"name": "Sim " + (i+1), "data": toArray(result[i], result[i].length)});
     }
     return arr;
 }

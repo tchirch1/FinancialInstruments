@@ -23,15 +23,15 @@ public class MonteCarloResource {
 
     @GET
     @UnitOfWork
-    @Path("/{size}/{mValue}")
-    public MonteCarlo monteMans(@PathParam("size") int N,
-                                @PathParam("mValue") int M,
+    public MonteCarlo monteMans(@QueryParam("s0") double s0,
+                                @QueryParam("size") int N,
+                                @QueryParam("mValue") int M,
                                 @QueryParam("time") double time) {
         List<List<Double>> things = FastList.newList();
         for (int i=0;i<M;i++) {
-            final List<Double> vals = UsefulFunctions.randomGaussian(N);
-            vals.set(0, 20.0);
-            for (int j=0;j<N-1;j++) {
+            final List<Double> vals = UsefulFunctions.randomGaussian(N+1);
+            vals.set(0, s0);
+            for (int j=0;j<N;j++) {
                 vals.set(j+1, vals.get(j) + vals.get(j+1));
             }
             things.add(vals);
@@ -42,7 +42,7 @@ public class MonteCarloResource {
     {
         double delta = T/N;
         List<Double> list = FastList.newList();
-        for (int i=0; i<N;i++)
+        for (int i=0; i<=N;i++)
         {
             list.add(delta * i);
         }
