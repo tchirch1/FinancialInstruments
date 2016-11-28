@@ -2,10 +2,12 @@
 
 <div ng-controller="MonteCarloCtrl">
     <form class="form-inline" ng-submit="getChart()">
-        <input type="text" class="span3" ng-model="s0" size="30" placeholder="Spot">
-        <input type="text" class="span3" ng-model="nValue" size="30" placeholder="N">
-        <input type="text" class="span3" ng-model="mValue" size="30" placeholder="M">
-        <input type="text" class="span3" ng-model="time" size="30" placeholder="T">
+        <input type="text" class="span2" ng-model="s0" size="30" placeholder="Spot">
+        <input type="text" class="span2" ng-model="nValue" size="30" placeholder="N">
+        <input type="text" class="span2" ng-model="mValue" size="30" placeholder="M">
+        <input type="text" class="span2" ng-model="r" size="30" placeholder="interest">
+        <input type="text" class="span2" ng-model="sigma" size="30" placeholder="vol">
+        <input type="text" class="span2" ng-model="time" size="30" placeholder="Time">
         <input class="btn-primary" type="submit" value="Generate Grid">
     </form>
     <table class="table table-bordered table-striped">

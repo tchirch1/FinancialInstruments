@@ -3,7 +3,13 @@ angular.module('AngularChart', ['ngResource', 'ui.bootstrap'], function ($dialog
 }).controller('MonteCarloCtrl', function($scope, $http) {
     var genericUrl = 'http://localhost:9000/api/montes';
     $scope.getChart = function () {
-        var url = genericUrl + '?s0='+$scope.s0+'&size='+$scope.nValue +'&mValue='+$scope.mValue+'&time='+$scope.time;
+        var url = genericUrl
+            + '?s0='+$scope.s0
+            + '&sigma='+$scope.sigma
+            + '&r='+$scope.r
+            + '&nValue='+$scope.nValue
+            +'&mValue='+$scope.mValue
+            +'&time='+$scope.time;
         $http.get(url).then(function (response) {
             $scope.lineChartXData = toArray(response.data.timeSeries);
             $scope.lineChartYData = add2D(response.data.simulation);

@@ -24,28 +24,11 @@ public class MonteCarloResource {
     @GET
     @UnitOfWork
     public MonteCarlo monteMans(@QueryParam("s0") double s0,
-                                @QueryParam("size") int N,
+                                @QueryParam("sigma") double sigma,
+                                @QueryParam("r") double r,
+                                @QueryParam("nValue") int N,
                                 @QueryParam("mValue") int M,
                                 @QueryParam("time") double time) {
-        List<List<Double>> things = FastList.newList();
-        for (int i=0;i<M;i++) {
-            final List<Double> vals = UsefulFunctions.randomGaussian(N+1);
-            vals.set(0, s0);
-            for (int j=0;j<N;j++) {
-                vals.set(j+1, vals.get(j) + vals.get(j+1));
-            }
-            things.add(vals);
-        }
-        return new MonteCarlo(timeBand(time, N), things);
-    }
-    public static List<Double> timeBand(double T, int N)
-    {
-        double delta = T/N;
-        List<Double> list = FastList.newList();
-        for (int i=0; i<=N;i++)
-        {
-            list.add(delta * i);
-        }
-        return list;
+        return new MonteCarlo(s0,r,sigma, time, N, M);
     }
 }
