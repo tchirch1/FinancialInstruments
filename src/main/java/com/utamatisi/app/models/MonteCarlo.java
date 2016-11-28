@@ -56,7 +56,7 @@ public class MonteCarlo {
             final List<Double> vals = UsefulFunctions.randomGaussian(N+1);
             vals.set(0, s0);
             for (int j=0;j<N;j++) {
-                vals.set(j+1, vals.get(j) * Math.exp(muDt + sigma * dt * vals.get(j+1)));
+                vals.set(j+1, vals.get(j) * Math.exp(muDt + sigma * Math.sqrt(dt) * vals.get(j+1)));
             }
             things.add(vals);
         }

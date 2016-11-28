@@ -3,6 +3,9 @@ package com.utamatisi.app.resources;
 import com.utamatisi.app.models.MonteCarlo;
 import controller.UsefulFunctions;
 import io.dropwizard.hibernate.UnitOfWork;
+import model.IssuedEquityStock;
+import model.Option;
+import model.Stock;
 import org.eclipse.collections.impl.list.mutable.FastList;
 
 import javax.ws.rs.*;

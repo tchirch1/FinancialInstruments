@@ -30,6 +30,13 @@ public class StockResource {
         return stockDAO.findAll();
     }
 
+    @GET
+    @UnitOfWork
+    @Path("/test")
+    public Stock getOne(@QueryParam("id") int id) {
+        return stockDAO.findAll().get(0);
+    }
+
     @POST
     @UnitOfWork
     public Stock createStock(Stock stock) {
