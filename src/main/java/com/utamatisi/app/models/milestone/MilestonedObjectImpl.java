@@ -8,7 +8,8 @@ import java.util.Date;
  * Date Created 1/25/2016.
  * Package: ${PACKAGE}
  */
-public class MilestonedObjectImpl<B extends BusinessDateMilestoned, P extends ProcessingDateMilestoned> implements MilestonedObject {
+public class MilestonedObjectImpl<B extends BusinessDateMilestoned, P extends ProcessingDateMilestoned>
+        implements MilestonedObject {
     @Override
     public void closeAsOf(Timestamp timestamp) {
         ((P)this).setProcessingDateTo(timestamp);

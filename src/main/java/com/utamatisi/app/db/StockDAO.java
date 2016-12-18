@@ -7,28 +7,14 @@ import org.hibernate.SessionFactory;
 
 import java.util.List;
 
-public class StockDAO extends AbstractDAO<Stock> {
+public class StockDAO extends GenericDAO<Stock> {
     public StockDAO(SessionFactory factory) {
         super(factory);
     }
 
-    public Optional<Stock> findById(Long id) {
-        return Optional.fromNullable(get(id));
+    @Override
+    public String getTableName() {
+        return "Stock";
     }
-
-    public Stock create(Stock Stock) {
-        Stock persist = persist(Stock);
-        return persist;
-    }
-    public List<Stock> findAll() {
-        return list(namedQuery("Stock.findAll"));
-    }
-
-    public void delete(Long id) {
-        Stock Stock = findById(id).get();
-        Stock.delete();
-        currentSession().saveOrUpdate(Stock);
-    }
-
 }
 

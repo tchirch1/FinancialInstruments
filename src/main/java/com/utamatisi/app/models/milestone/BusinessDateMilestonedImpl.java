@@ -23,7 +23,7 @@ public class BusinessDateMilestonedImpl extends MilestonedObjectImpl implements 
 
     public BusinessDateMilestonedImpl() {
         this.businessDateFrom = new Timestamp(new Date().getTime());
-        this.businessDateTo = DateUtil.getInfinityTimestamp();
+        this.businessDateTo = DateUtil.INFINITY_BUSINESSDATE;
     }
 
     @Override

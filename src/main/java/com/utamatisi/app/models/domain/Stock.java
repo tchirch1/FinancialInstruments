@@ -11,9 +11,7 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "stock")
-@NamedQueries({
-        @NamedQuery(name = "Stock.findAll", query = Stock.GENERIC_SELECT)
-})
+@NamedQueries({@NamedQuery(name = "Stock.findAll", query = Stock.GENERIC_SELECT)})
 public class Stock extends BusinessDateMilestonedImpl{
 
     public static final String GENERIC_SELECT = "select s from Stock s  where s.businessDateTo >= CURRENT_TIMESTAMP";

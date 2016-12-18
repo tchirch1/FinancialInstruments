@@ -26,11 +26,10 @@ public class BiTemporalDateMilestonedImpl implements BusinessDateMilestoned, Pro
 
     public BiTemporalDateMilestonedImpl(Timestamp processingDateFrom) {
         this.processingDateFrom = processingDateFrom;
-        this.processingDateTo = DateUtil.getInfinityProcessingTimestamp();
+        this.processingDateTo = DateUtil.INFINITY_PROCESSING_DATE;
         this.businessDateFrom = new Timestamp(new Date().getTime());
-        this.businessDateTo = DateUtil.getInfinityTimestamp();
+        this.businessDateTo = DateUtil.INFINITY_BUSINESSDATE;
     }
-
 
     @Override
     public Timestamp getBusinessDateFrom() {

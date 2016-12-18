@@ -8,7 +8,6 @@ import java.sql.Timestamp;
  * Package: ${PACKAGE}
  */
 public interface BusinessDateMilestoned {
-
     Timestamp getBusinessDateFrom();
     Timestamp getBusinessDateTo();
     void setBusinessDateTo(Timestamp timestamp);

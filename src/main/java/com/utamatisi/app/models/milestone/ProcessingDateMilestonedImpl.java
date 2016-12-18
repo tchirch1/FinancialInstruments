@@ -17,7 +17,7 @@ public class ProcessingDateMilestonedImpl implements ProcessingDateMilestoned {
     private Timestamp processingDateTo;
 
     public ProcessingDateMilestonedImpl(Timestamp processingDateFrom) {
-        this.processingDateTo = DateUtil.getInfinityProcessingTimestamp();
+        this.processingDateTo = DateUtil.INFINITY_PROCESSING_DATE;
         this.processingDateFrom = processingDateFrom;
     }
 
