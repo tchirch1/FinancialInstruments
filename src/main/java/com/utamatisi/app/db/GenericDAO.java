@@ -6,7 +6,7 @@ import org.hibernate.SessionFactory;
 
 import java.util.List;
 
-public abstract class GenericDAO<M extends MilestonedObject> extends AbstractDAO<M>
+public class GenericDAO<M extends MilestonedObject> extends AbstractDAO<M> implements DatabaseObject<M>
 {
 
     public GenericDAO(SessionFactory factory)
@@ -14,25 +14,49 @@ public abstract class GenericDAO<M extends MilestonedObject> extends AbstractDAO
         super(factory);
     }
 
-    public List<M> findAll()
+    @Override
+    public String getTableName()
     {
-        List<M> objects = list(namedQuery(getTableName() + ".findAll"));
-        return objects;
+        return null;
     }
 
+    @Override
     public M create(M object)
     {
         M persist = persist(object);
         return persist;
     }
 
-    public void delete(Long id)
+    @Override
+    public List<M> findAll()
     {
-        M object = get(id);
+        List<M> objects = list(namedQuery(getTableName() + ".findAll"));
+        return objects;
+    }
+
+    @Override
+    public M findById(Long id)
+    {
+        return get(id);
+    }
+
+    @Override
+    public void update(M object)
+    {
+        currentSession().saveOrUpdate(object);
+    }
+
+    @Override
+    public void delete(M object)
+    {
         object.delete();
         currentSession().saveOrUpdate(object);
     }
 
-    public abstract String getTableName();
+    public void delete(Long id)
+    {
+        this.delete(this.findById(id));
+    }
+
 }
 
