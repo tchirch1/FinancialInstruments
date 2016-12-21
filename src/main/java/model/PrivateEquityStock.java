@@ -6,34 +6,16 @@ import controller.PassThruValuer;
  * Created by: tituskc
  * Created On  Wed, Nov 23, 2016 at 9:22 AM.
  */
-public class PrivateEquityStock<V extends PassThruValuer> implements Stock<V> {
-    @Override
-    public double value(V valuer) {
-        return 0;
+public class PrivateEquityStock extends StockImpl<PassThruValuer>
+{
+
+    private PrivateEquityStock(String companyName, String symbol, String market, double currentValue, double volatility)
+    {
+        super(companyName, symbol, market, currentValue, volatility);
     }
 
-    @Override
-    public String companyName() {
-        return null;
-    }
-
-    @Override
-    public String symbol() {
-        return null;
-    }
-
-    @Override
-    public String market() {
-        return null;
-    }
-
-    @Override
-    public void updateValue(double newValue) {
-
-    }
-
-    @Override
-    public double volatility() {
-        return 0;
+    public static PrivateEquityStock create(String companyName, String symbol, String market, double currentValue, double volatility)
+    {
+        return new PrivateEquityStock(companyName, symbol, market, currentValue, volatility);
     }
 }

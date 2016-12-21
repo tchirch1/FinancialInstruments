@@ -13,7 +13,8 @@ import java.util.Date;
  * Package: ${PACKAGE}
  */
 @MappedSuperclass
-public class BusinessDateMilestonedImpl extends MilestonedObjectImpl implements BusinessDateMilestoned {
+public class BusinessDateMilestonedImpl extends MilestonedObjectImpl implements BusinessDateMilestoned
+{
 
     @Column(name = "out_z")
     private Timestamp businessDateTo;
@@ -21,25 +22,31 @@ public class BusinessDateMilestonedImpl extends MilestonedObjectImpl implements 
     @Column(name = "in_z")
     private Timestamp businessDateFrom;
 
-    public BusinessDateMilestonedImpl() {
+    public BusinessDateMilestonedImpl()
+    {
         this.businessDateFrom = new Timestamp(new Date().getTime());
         this.businessDateTo = DateUtil.INFINITY_BUSINESSDATE;
     }
 
     @Override
-    public Timestamp getBusinessDateFrom() {
+    public Timestamp getBusinessDateFrom()
+    {
         return businessDateFrom;
     }
 
+    public void setBusinessDateFrom(Timestamp businessDateFrom)
+    {
+        this.businessDateFrom = businessDateFrom;
+    }
+
     @Override
-    public Timestamp getBusinessDateTo() {
+    public Timestamp getBusinessDateTo()
+    {
         return this.businessDateTo;
     }
 
-    public void setBusinessDateTo(Timestamp businessDateTo) {
+    public void setBusinessDateTo(Timestamp businessDateTo)
+    {
         this.businessDateTo = businessDateTo;
-    }
-    public void setBusinessDateFrom(Timestamp businessDateFrom) {
-        this.businessDateFrom = businessDateFrom;
     }
 }

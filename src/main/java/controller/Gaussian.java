@@ -4,20 +4,24 @@ package controller;
  * Created by: tituskc
  * Created On  Wed, Nov 23, 2016 at 9:22 AM.
  */
-class Gaussian {
+class Gaussian
+{
 
     // return pdf(x) = standard Gaussian pdf
-    private static double pdf(double x) {
+    private static double pdf(double x)
+    {
         return Math.exp(-x * x / 2) / Math.sqrt(2 * Math.PI);
     }
 
     // return pdf(x, mu, signma) = Gaussian pdf with mean mu and stddev sigma
-    private static double pdf(double x, double mu, double sigma) {
+    private static double pdf(double x, double mu, double sigma)
+    {
         return phi((x - mu) / sigma) / sigma;
     }
 
     // return cdf(z) = standard Gaussian cdf using Taylor approximation
-    static double cdf(double z) {
+    static double cdf(double z)
+    {
         if (z < -8.0) return 0.0;
         if (z > 8.0) return 1.0;
         double sum = 0.0, term = z;
@@ -29,17 +33,19 @@ class Gaussian {
     }
 
     // return cdf(z, mu, sigma) = Gaussian cdf with mean mu and stddev sigma
-    private static double cdf(double z, double mu, double sigma) {
+    private static double cdf(double z, double mu, double sigma)
+    {
         return cdf((z - mu) / sigma);
     }
 
     // Compute z such that cdf(z) = y via bisection search
-    private static double inverseCDF(double y) {
+    private static double inverseCDF(double y)
+    {
         return inverseCDF(y, 0.00000001, -8, 8);
     }
 
-    // bisection search
-    private static double inverseCDF(double y, double delta, double lo, double hi) {
+    private static double inverseCDF(double y, double delta, double lo, double hi)
+    {
         double mid = lo + (hi - lo) / 2;
         if (hi - lo < delta) return mid;
         if (cdf(mid) > y) return inverseCDF(y, delta, lo, mid);
@@ -48,32 +54,38 @@ class Gaussian {
 
 
     // return phi(x) = standard Gaussian pdf
-    private static double phi(double x) {
+    private static double phi(double x)
+    {
         return pdf(x);
     }
 
     // return phi(x, mu, signma) = Gaussian pdf with mean mu and stddev sigma
-    public static double phi(double x, double mu, double sigma) {
+    public static double phi(double x, double mu, double sigma)
+    {
         return pdf(x, mu, sigma);
     }
 
     // return Phi(z) = standard Gaussian cdf using Taylor approximation
-    public static double Phi(double z) {
+    public static double Phi(double z)
+    {
         return cdf(z);
     }
 
     // return Phi(z, mu, sigma) = Gaussian cdf with mean mu and stddev sigma
-    public static double Phi(double z, double mu, double sigma) {
+    public static double Phi(double z, double mu, double sigma)
+    {
         return cdf(z, mu, sigma);
     }
 
     // Compute z such that Phi(z) = y via bisection search
-    public static double PhiInverse(double y) {
+    public static double PhiInverse(double y)
+    {
         return inverseCDF(y);
     }
 
     // test client
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         double z = 0.5;
         double mu = 0.0;
         double sigma = 1;

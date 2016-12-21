@@ -8,8 +8,11 @@ import org.eclipse.jetty.webapp.WebAppContext;
  * This is the entry point to your application. The Java command that is used for
  * launching should fire this main method.
  */
-public class WebAppGateway {
-    public static void main(String[] args) throws Exception {
+public class WebAppGateway
+{
+
+    public static void main(String[] args) throws Exception
+    {
         // The simple Jetty config here will serve static content from the webapp directory
         String webappDirLocation = "src/main/webapp/";
 

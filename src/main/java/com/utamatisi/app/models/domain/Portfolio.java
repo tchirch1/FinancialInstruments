@@ -1,11 +1,8 @@
 package com.utamatisi.app.models.domain;
 
 import com.utamatisi.app.models.milestone.BusinessDateMilestonedImpl;
-import org.eclipse.collections.api.tuple.Pair;
-import org.eclipse.collections.impl.list.mutable.FastList;
 
 import javax.persistence.*;
-import java.util.List;
 
 /**
  * Created by: tituskc
@@ -13,10 +10,9 @@ import java.util.List;
  */
 @Entity
 @Table(name = "portfolio")
-@NamedQueries({
-        @NamedQuery(name = "Portfolio.findAll", query = Portfolio.GENERIC_SELECT)
-})
-public class Portfolio extends BusinessDateMilestonedImpl {
+@NamedQueries({@NamedQuery(name = "Portfolio.findAll", query = Portfolio.GENERIC_SELECT)})
+public class Portfolio extends BusinessDateMilestonedImpl
+{
 
     public static final String GENERIC_SELECT = "select p from Portfolio p  where p.businessDateTo >= CURRENT_TIMESTAMP";
 
@@ -24,16 +20,18 @@ public class Portfolio extends BusinessDateMilestonedImpl {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
 
-    @Column(name="portfolioNumber", nullable = false)
+    @Column(name = "portfolioNumber", nullable = false)
     private String portfolioNumber;
 
-    @Column(name="stockId", nullable = false)
+    @Column(name = "stockId", nullable = false)
     private String stockId;
 
-    @Column(name="stockCount")
-    private double  stockCount;
+    @Column(name = "stockCount")
+    private double stockCount;
 
-    public Portfolio(){}
+    public Portfolio()
+    {
+    }
 
     public Portfolio(String portfolioNumber, String stockId, double stockCount)
     {
@@ -42,35 +40,43 @@ public class Portfolio extends BusinessDateMilestonedImpl {
         this.stockCount = stockCount;
     }
 
-    public String getPortfolioNumber() {
+    public String getPortfolioNumber()
+    {
         return portfolioNumber;
     }
 
-    public void setPortfolioNumber(String portfolioNumber) {
+    public void setPortfolioNumber(String portfolioNumber)
+    {
         this.portfolioNumber = portfolioNumber;
     }
 
-    public String getStockId() {
+    public String getStockId()
+    {
         return stockId;
     }
 
-    public void setStockId(String stockId) {
+    public void setStockId(String stockId)
+    {
         this.stockId = stockId;
     }
 
-    public double getStockCount() {
+    public double getStockCount()
+    {
         return stockCount;
     }
 
-    public void setStockCount(double stockCount) {
+    public void setStockCount(double stockCount)
+    {
         this.stockCount = stockCount;
     }
 
-    public long getId() {
+    public long getId()
+    {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(long id)
+    {
         this.id = id;
     }
 }

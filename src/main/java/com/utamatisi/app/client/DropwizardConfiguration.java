@@ -13,7 +13,9 @@ import javax.validation.constraints.NotNull;
 import java.util.Collections;
 import java.util.Map;
 
-public class DropwizardConfiguration extends Configuration {
+public class DropwizardConfiguration extends Configuration
+{
+
     @NotEmpty
     private String template;
 
@@ -31,46 +33,55 @@ public class DropwizardConfiguration extends Configuration {
     private GraphiteReporterFactory graphiteReporterFactory = new GraphiteReporterFactory();
 
     @JsonProperty
-    public String getTemplate() {
+    public String getTemplate()
+    {
         return template;
     }
 
     @JsonProperty
-    public void setTemplate(String template) {
+    public void setTemplate(String template)
+    {
         this.template = template;
     }
 
     @JsonProperty
-    public String getDefaultName() {
+    public String getDefaultName()
+    {
         return defaultName;
     }
 
     @JsonProperty
-    public void setDefaultName(String defaultName) {
+    public void setDefaultName(String defaultName)
+    {
         this.defaultName = defaultName;
     }
 
-    public Template buildTemplate() {
+    public Template buildTemplate()
+    {
         return new Template(template, defaultName);
     }
 
     @JsonProperty("database")
-    public DataSourceFactory getDataSourceFactory() {
+    public DataSourceFactory getDataSourceFactory()
+    {
         return database;
     }
 
     @JsonProperty("database")
-    public void setDataSourceFactory(DataSourceFactory dataSourceFactory) {
+    public void setDataSourceFactory(DataSourceFactory dataSourceFactory)
+    {
         this.database = dataSourceFactory;
     }
 
     @JsonProperty("viewRendererConfiguration")
-    public Map<String, Map<String, String>> getViewRendererConfiguration() {
+    public Map<String, Map<String, String>> getViewRendererConfiguration()
+    {
         return viewRendererConfiguration;
     }
 
     @JsonProperty("viewRendererConfiguration")
-    public void setViewRendererConfiguration(Map<String, Map<String, String>> viewRendererConfiguration) {
+    public void setViewRendererConfiguration(Map<String, Map<String, String>> viewRendererConfiguration)
+    {
         final ImmutableMap.Builder<String, Map<String, String>> builder = ImmutableMap.builder();
         for (Map.Entry<String, Map<String, String>> entry : viewRendererConfiguration.entrySet()) {
             builder.put(entry.getKey(), ImmutableMap.copyOf(entry.getValue()));
@@ -79,12 +90,14 @@ public class DropwizardConfiguration extends Configuration {
     }
 
     @JsonProperty("metrics")
-    public GraphiteReporterFactory getGraphiteReporterFactory() {
+    public GraphiteReporterFactory getGraphiteReporterFactory()
+    {
         return graphiteReporterFactory;
     }
 
     @JsonProperty("metrics")
-    public void setGraphiteReporterFactory(GraphiteReporterFactory graphiteReporterFactory) {
+    public void setGraphiteReporterFactory(GraphiteReporterFactory graphiteReporterFactory)
+    {
         this.graphiteReporterFactory = graphiteReporterFactory;
     }
 }

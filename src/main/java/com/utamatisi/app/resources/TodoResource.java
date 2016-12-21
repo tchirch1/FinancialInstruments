@@ -17,29 +17,34 @@ import java.util.List;
  */
 @Path("/todos")
 @Produces(MediaType.APPLICATION_JSON)
-public class TodoResource {
+public class TodoResource
+{
+
     private final TodoDAO todoDAO;
 
-    public TodoResource(TodoDAO todoDAO) {
+    public TodoResource(TodoDAO todoDAO)
+    {
         this.todoDAO = todoDAO;
     }
 
     @GET
     @UnitOfWork
-    public List<Todo> listTodos() {
+    public List<Todo> listTodos()
+    {
         return todoDAO.findAll();
     }
 
     @POST
     @UnitOfWork
-    public Todo createTodo(Todo todo) {
+    public Todo createTodo(Todo todo)
+    {
         return todoDAO.create(todo);
     }
 
     @DELETE
     @Produces(MediaType.APPLICATION_JSON)
     @UnitOfWork
-    public Response deleteTodo(@QueryParam("id")LongParam id)
+    public Response deleteTodo(@QueryParam("id") LongParam id)
     {
         todoDAO.delete(id.get());
         return Response.ok().build();

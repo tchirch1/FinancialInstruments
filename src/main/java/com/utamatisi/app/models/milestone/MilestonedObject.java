@@ -7,7 +7,9 @@ import java.sql.Timestamp;
  * Date Created 1/25/2016.
  * Package: ${PACKAGE}
  */
-public interface MilestonedObject {
+public interface MilestonedObject
+{
+
     void closeAsOf(Timestamp timestamp);
 
     void delete();

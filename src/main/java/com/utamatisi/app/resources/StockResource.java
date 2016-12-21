@@ -17,35 +17,42 @@ import java.util.List;
  */
 @Path("/stocks")
 @Produces(MediaType.APPLICATION_JSON)
-public class StockResource {
+public class StockResource
+{
+
     private final StockDAO stockDAO;
 
-    public StockResource(StockDAO stockDAO) {
+    public StockResource(StockDAO stockDAO)
+    {
         this.stockDAO = stockDAO;
     }
 
     @GET
     @UnitOfWork
-    public List<Stock> listStocks() {
+    public List<Stock> listStocks()
+    {
         return stockDAO.findAll();
     }
 
     @GET
     @UnitOfWork
     @Path("/test")
-    public Stock getOne(@QueryParam("id") int id) {
+    public Stock getOne(@QueryParam("id") int id)
+    {
         return stockDAO.findAll().get(0);
     }
 
     @POST
     @UnitOfWork
-    public Stock createStock(Stock stock) {
+    public Stock createStock(Stock stock)
+    {
         return stockDAO.create(stock);
     }
+
     @DELETE
     @Produces(MediaType.APPLICATION_JSON)
     @UnitOfWork
-    public Response deleteStock(@QueryParam("id")LongParam id)
+    public Response deleteStock(@QueryParam("id") LongParam id)
     {
         stockDAO.delete(id.get());
         return Response.ok().build();

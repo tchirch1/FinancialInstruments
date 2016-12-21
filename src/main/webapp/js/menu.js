@@ -26,9 +26,9 @@ sidebarMenu.directive("menu", function () {
     return {
         restrict: "A",
         template: '<ul class="nav nav-list">' +
-            '<li class="nav-header">Menu</li>' +
-            '<li ng-repeat="item in menu.items"><a href="{{item.href}}">{{item.name}}</a></li>' +
-            '</ul>'
+        '<li class="nav-header">Menu</li>' +
+        '<li ng-repeat="item in menu.items"><a href="{{item.href}}">{{item.name}}</a></li>' +
+        '</ul>'
     }
 });
 

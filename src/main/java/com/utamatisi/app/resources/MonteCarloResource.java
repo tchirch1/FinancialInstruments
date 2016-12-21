@@ -1,16 +1,13 @@
 package com.utamatisi.app.resources;
 
 import com.utamatisi.app.models.MonteCarlo;
-import controller.UsefulFunctions;
 import io.dropwizard.hibernate.UnitOfWork;
-import model.IssuedEquityStock;
-import model.Option;
-import model.Stock;
-import org.eclipse.collections.impl.list.mutable.FastList;
 
-import javax.ws.rs.*;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
-import java.util.List;
 
 /**
  * Created by titus.chirchir12
@@ -19,19 +16,17 @@ import java.util.List;
  */
 @Path("/montes")
 @Produces(MediaType.APPLICATION_JSON)
-public class MonteCarloResource {
+public class MonteCarloResource
+{
 
-    public MonteCarloResource() {
+    public MonteCarloResource()
+    {
     }
 
     @GET
     @UnitOfWork
-    public MonteCarlo monteMans(@QueryParam("s0") double s0,
-                                @QueryParam("sigma") double sigma,
-                                @QueryParam("r") double r,
-                                @QueryParam("nValue") int N,
-                                @QueryParam("mValue") int M,
-                                @QueryParam("time") double time) {
-        return new MonteCarlo(s0,r,sigma, time, N, M);
+    public MonteCarlo monteMans(@QueryParam("s0") double s0, @QueryParam("sigma") double sigma, @QueryParam("r") double r, @QueryParam("nValue") int N, @QueryParam("mValue") int M, @QueryParam("time") double time)
+    {
+        return new MonteCarlo(s0, r, sigma, time, N, M);
     }
 }

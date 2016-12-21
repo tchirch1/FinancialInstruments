@@ -8,15 +8,14 @@ import java.util.List;
  * Date Created 3/5/2016.
  * Package: ${PACKAGE}
  */
-public enum Role {
-    NONE,
-    READ_ONLY("read"),
-    READ_WRITE("read","write");
+public enum Role
+{
+    NONE, READ_ONLY("read"), READ_WRITE("read", "write");
 
     private final List<String> levels;
 
-    Role(String... levels) {
-
+    Role(String... levels)
+    {
         this.levels = Arrays.asList(levels);
     }
 }

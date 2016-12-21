@@ -5,7 +5,10 @@ package com.utamatisi.app.util;
  * Date Created 3/5/2016.
  * Package: ${PACKAGE}
  */
-public interface MathematicalConcepts {
+public interface MathematicalConcepts
+{
+
     double power(double value, int power);
+
     long fibonacci(int number);
 }

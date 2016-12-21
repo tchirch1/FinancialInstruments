@@ -2,10 +2,15 @@ package com.utamatisi.app.client;
 
 import com.utamatisi.app.auth.ExampleAuthenticator;
 import com.utamatisi.app.auth.ExampleAuthorizer;
-import com.utamatisi.app.db.*;
+import com.utamatisi.app.db.PortfolioDAO;
+import com.utamatisi.app.db.StockDAO;
+import com.utamatisi.app.db.TodoDAO;
 import com.utamatisi.app.filter.DateRequiredFeature;
 import com.utamatisi.app.models.User;
-import com.utamatisi.app.resources.*;
+import com.utamatisi.app.resources.MonteCarloResource;
+import com.utamatisi.app.resources.PortfolioResource;
+import com.utamatisi.app.resources.StockResource;
+import com.utamatisi.app.resources.TodoResource;
 import io.dropwizard.auth.AuthDynamicFeature;
 import io.dropwizard.auth.AuthValueFactoryProvider;
 import io.dropwizard.auth.basic.BasicCredentialAuthFilter;
@@ -25,28 +30,31 @@ import java.util.EnumSet;
  * Date Created 1/24/2016.
  * Package: ${PACKAGE}
  */
-public class ResourceRegister {
+public class ResourceRegister
+{
+
     private static final String ALLOWED_HEADERS = "X-Requested-With,Content-Type,Accept,Origin";
     private static final String ALLOWED_METHODS = "OPTIONS,GET,PUT,POST,DELETE,HEAD";
-    public static void registerResources(JerseyEnvironment jersey) {
+
+    public static void registerResources(JerseyEnvironment jersey)
+    {
         jersey.register(DateRequiredFeature.class);
-        jersey.register(new AuthDynamicFeature(new BasicCredentialAuthFilter.Builder<User>()
-                .setAuthenticator(new ExampleAuthenticator())
-                .setAuthorizer(new ExampleAuthorizer())
-                .setRealm("SUPER SECRET STUFF")
-                .buildAuthFilter()));
+        jersey.register(new AuthDynamicFeature(new BasicCredentialAuthFilter.Builder<User>().setAuthenticator(new ExampleAuthenticator()).setAuthorizer(new ExampleAuthorizer()).setRealm("SUPER SECRET STUFF").buildAuthFilter()));
         jersey.register(new AuthValueFactoryProvider.Binder<>(User.class));
         jersey.register(RolesAllowedDynamicFeature.class);
     }
 
-    public static void registerHibernateResources(JerseyEnvironment jersey, HibernateBundle<DropwizardConfiguration> hibernateBundle) {
+    public static void registerHibernateResources(JerseyEnvironment jersey, HibernateBundle<DropwizardConfiguration> hibernateBundle)
+    {
         SessionFactory sessionFactory = hibernateBundle.getSessionFactory();
         jersey.register(new TodoResource(new TodoDAO(sessionFactory)));
         jersey.register(new StockResource(new StockDAO(sessionFactory)));
         jersey.register(new PortfolioResource(new PortfolioDAO(sessionFactory)));
         jersey.register(new MonteCarloResource());
     }
-    public static void registerCors(Environment environment) {
+
+    public static void registerCors(Environment environment)
+    {
         final FilterRegistration.Dynamic cors = environment.servlets().addFilter("CORS", CrossOriginFilter.class);
         cors.setInitParameter("allowedOrigins", "*");
         cors.setInitParameter("allowedHeaders", ALLOWED_HEADERS);

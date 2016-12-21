@@ -7,8 +7,12 @@ import java.sql.Timestamp;
  * Date Created 1/24/2016.
  * Package: ${PACKAGE}
  */
-public interface BusinessDateMilestoned {
+public interface BusinessDateMilestoned
+{
+
     Timestamp getBusinessDateFrom();
+
     Timestamp getBusinessDateTo();
+
     void setBusinessDateTo(Timestamp timestamp);
 }

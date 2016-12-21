@@ -1,1 +1,1 @@
-angular.module('utamatisiApp', ['sidebarMenu', 'stocks', 'todos', 'portfolios','stockstream','monte','AngularChart']);
+angular.module('utamatisiApp', ['sidebarMenu', 'stocks', 'todos', 'portfolios', 'stockstream', 'monte', 'AngularChart']);

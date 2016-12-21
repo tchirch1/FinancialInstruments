@@ -20,11 +20,10 @@ function TodoCtrl($scope, TodosResource, $dialog) {
         if (todo != undefined) {
             var save = TodosResource.save(todo);
             var promise = save.$promise;
-            if(promise == undefined)
-            {
+            if (promise == undefined) {
                 promise = save;
             }
-            promise.then(function() {
+            promise.then(function () {
                 $scope.todoForm.todo = {};
                 $scope.todoList = TodosResource.query();
             });

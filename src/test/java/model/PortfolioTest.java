@@ -13,12 +13,14 @@ import java.util.List;
  * Created by: tituskc
  * Created On  Wed, Nov 23, 2016 at 9:22 AM.
  */
-public class PortfolioTest {
+public class PortfolioTest
+{
 
     private static final double TOLERANCE = 0.01;
 
     @Test
-    public void testCreate() {
+    public void testCreate()
+    {
         Stock stock1 = IssuedEquityStock.create("Virtual Tree Owners", "VTO", "Kabarnet Stock Exchange", 0.08, 0.25);
         Stock stock2 = IssuedEquityStock.create("Dalai Lama Fellows", "DLF", "San Francisco Stock Exchange", 80.08, 0.25);
         Pair<Stock, Double> pair = Tuples.pair(stock1, 23.0);
@@ -32,7 +34,8 @@ public class PortfolioTest {
     }
 
     @Test
-    public void gaussian() {
+    public void gaussian()
+    {
         List<Double> randomGaussian = UsefulFunctions.randomGaussian(10000000);
         double mean = UsefulFunctions.mean(randomGaussian);
         double variance = UsefulFunctions.variance(randomGaussian);

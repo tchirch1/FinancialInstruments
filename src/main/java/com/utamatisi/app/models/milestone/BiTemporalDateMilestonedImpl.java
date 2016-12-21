@@ -11,7 +11,8 @@ import java.util.Date;
  * Date Created 1/25/2016.
  * Package: ${PACKAGE}
  */
-public class BiTemporalDateMilestonedImpl implements BusinessDateMilestoned, ProcessingDateMilestoned {
+public class BiTemporalDateMilestonedImpl implements BusinessDateMilestoned, ProcessingDateMilestoned
+{
 
     @Column(name = "out_z")
     private Timestamp businessDateTo;
@@ -24,7 +25,8 @@ public class BiTemporalDateMilestonedImpl implements BusinessDateMilestoned, Pro
     @Column(name = "thru_z")
     private Timestamp processingDateTo;
 
-    public BiTemporalDateMilestonedImpl(Timestamp processingDateFrom) {
+    public BiTemporalDateMilestonedImpl(Timestamp processingDateFrom)
+    {
         this.processingDateFrom = processingDateFrom;
         this.processingDateTo = DateUtil.INFINITY_PROCESSING_DATE;
         this.businessDateFrom = new Timestamp(new Date().getTime());
@@ -32,38 +34,46 @@ public class BiTemporalDateMilestonedImpl implements BusinessDateMilestoned, Pro
     }
 
     @Override
-    public Timestamp getBusinessDateFrom() {
+    public Timestamp getBusinessDateFrom()
+    {
         return this.businessDateFrom;
     }
 
-    @Override
-    public Timestamp getBusinessDateTo() {
-        return this.businessDateTo;
-    }
-
-    @Override
-    public Timestamp getProcessingDateFrom() {
-        return this.processingDateFrom;
-    }
-
-    @Override
-    public Timestamp getProcessingDateTo() {
-        return this.processingDateTo;
-    }
-
-    public void setBusinessDateTo(Timestamp businessDateTo) {
-        this.businessDateTo = businessDateTo;
-    }
-
-    public void setBusinessDateFrom(Timestamp businessDateFrom) {
+    public void setBusinessDateFrom(Timestamp businessDateFrom)
+    {
         this.businessDateFrom = businessDateFrom;
     }
 
-    public void setProcessingDateFrom(Timestamp processingDateFrom) {
+    @Override
+    public Timestamp getBusinessDateTo()
+    {
+        return this.businessDateTo;
+    }
+
+    public void setBusinessDateTo(Timestamp businessDateTo)
+    {
+        this.businessDateTo = businessDateTo;
+    }
+
+    @Override
+    public Timestamp getProcessingDateFrom()
+    {
+        return this.processingDateFrom;
+    }
+
+    public void setProcessingDateFrom(Timestamp processingDateFrom)
+    {
         this.processingDateFrom = processingDateFrom;
     }
 
-    public void setProcessingDateTo(Timestamp processingDateTo) {
+    @Override
+    public Timestamp getProcessingDateTo()
+    {
+        return this.processingDateTo;
+    }
+
+    public void setProcessingDateTo(Timestamp processingDateTo)
+    {
         this.processingDateTo = processingDateTo;
     }
 

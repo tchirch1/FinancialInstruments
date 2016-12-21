@@ -7,10 +7,10 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "todo")
-@NamedQueries({
-        @NamedQuery(name = "Todo.findAll", query = Todo.GENERIC_SELECT)
-})
-public class Todo  extends BusinessDateMilestonedImpl {
+@NamedQueries({@NamedQuery(name = "Todo.findAll", query = Todo.GENERIC_SELECT)})
+public class Todo extends BusinessDateMilestonedImpl
+{
+
     public static final String GENERIC_SELECT = "select t from Todo t  where t.businessDateTo >= CURRENT_TIMESTAMP";
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -25,17 +25,20 @@ public class Todo  extends BusinessDateMilestonedImpl {
     @Column(name = "inProgress")
     private boolean inProgress;
 
-    public Todo() {
+    public Todo()
+    {
     }
 
-    public Todo(String task, boolean done, boolean inProgress) {
+    public Todo(String task, boolean done, boolean inProgress)
+    {
         this.task = task;
         this.done = done;
         this.inProgress = inProgress;
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o)
+    {
         if (this == o) {
             return true;
         }
@@ -45,46 +48,52 @@ public class Todo  extends BusinessDateMilestonedImpl {
 
         final Todo that = (Todo) o;
 
-        return Objects.equals(this.id, that.id) &&
-                Objects.equals(this.done, that.done) &&
-                Objects.equals(this.inProgress, that.inProgress) &&
-                Objects.equals(this.task, that.task);
+        return Objects.equals(this.id, that.id) && Objects.equals(this.done, that.done) && Objects.equals(this.inProgress, that.inProgress) && Objects.equals(this.task, that.task);
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode()
+    {
         return Objects.hash(id, task, done, inProgress);
     }
 
-    public long getId() {
+    public long getId()
+    {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(long id)
+    {
         this.id = id;
     }
 
-    public String getTask() {
+    public String getTask()
+    {
         return task;
     }
 
-    public void setTask(String task) {
+    public void setTask(String task)
+    {
         this.task = task;
     }
 
-    public boolean isDone() {
+    public boolean isDone()
+    {
         return done;
     }
 
-    public void setDone(boolean done) {
+    public void setDone(boolean done)
+    {
         this.done = done;
     }
 
-    public boolean isInProgress() {
+    public boolean isInProgress()
+    {
         return inProgress;
     }
 
-    public void setInProgress(boolean inProgress) {
+    public void setInProgress(boolean inProgress)
+    {
         this.inProgress = inProgress;
     }
 }

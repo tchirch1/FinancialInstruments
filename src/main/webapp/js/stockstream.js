@@ -7,7 +7,7 @@ angular.module('stockstream', ['ngResource', 'ui.bootstrap'], function ($dialogP
     $dialogProvider.options({backdropClick: false, dialogFade: true});
 })
 
-.controller('StockStreamCtrl', function ($scope, $http) {
+    .controller('StockStreamCtrl', function ($scope, $http) {
 
         $scope.symbol = "";
         $scope.result = {};

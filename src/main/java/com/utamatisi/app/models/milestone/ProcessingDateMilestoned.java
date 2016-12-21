@@ -7,9 +7,12 @@ import java.sql.Timestamp;
  * Date Created 1/24/2016.
  * Package: ${PACKAGE}
  */
-public interface ProcessingDateMilestoned {
+public interface ProcessingDateMilestoned
+{
 
     Timestamp getProcessingDateFrom();
+
     Timestamp getProcessingDateTo();
+
     void setProcessingDateTo(Timestamp timestamp);
 }

@@ -1,15 +1,15 @@
 angular.module('AngularChart', ['ngResource', 'ui.bootstrap'], function ($dialogProvider) {
     $dialogProvider.options({backdropClick: false, dialogFade: true});
-}).controller('MonteCarloCtrl', function($scope, $http) {
+}).controller('MonteCarloCtrl', function ($scope, $http) {
     var genericUrl = 'http://localhost:9000/api/montes';
     $scope.getChart = function () {
         var url = genericUrl
-            + '?s0='+$scope.s0
-            + '&sigma='+$scope.sigma
-            + '&r='+$scope.r
-            + '&nValue='+$scope.nValue
-            +'&mValue='+$scope.mValue
-            +'&time='+$scope.time;
+            + '?s0=' + $scope.s0
+            + '&sigma=' + $scope.sigma
+            + '&r=' + $scope.r
+            + '&nValue=' + $scope.nValue
+            + '&mValue=' + $scope.mValue
+            + '&time=' + $scope.time;
         $http.get(url).then(function (response) {
             $scope.lineChartXData = toArray(response.data.timeSeries);
             $scope.lineChartYData = add2D(response.data.simulation);
@@ -94,14 +94,14 @@ angular.module('AngularChart', ['ngResource', 'ui.bootstrap'], function ($dialog
 function toArray(arr) {
     var arr2 = [];
     for (var i = 0; i < arr.length; i++) {
-        arr2.push(Math.round(arr[i]*100)/100);
+        arr2.push(Math.round(arr[i] * 100) / 100);
     }
     return arr2;
 }
 function add2D(result) {
     var arr = [];
     for (var i = 0; i < result.length; i++) {
-        arr.push({"name": "Sim " + (i+1), "data": toArray(result[i], result[i].length)});
+        arr.push({"name": "Sim " + (i + 1), "data": toArray(result[i], result[i].length)});
     }
     return arr;
 }

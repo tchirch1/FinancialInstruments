@@ -3,7 +3,6 @@ package simulations;
 import controller.OptionPricer;
 import controller.UsefulFunctions;
 import model.Option;
-import simulations.MonteCarloSimulation;
 
 import java.util.List;
 
@@ -11,22 +10,26 @@ import java.util.List;
  * Created by: tituskc
  * Created On  Wed, Nov 23, 2016 at 9:22 AM.
  */
-public class MonteCarloOptionPricer<T extends Option> implements OptionPricer<T>, MonteCarloSimulation {
+public class MonteCarloOptionPricer<T extends Option> implements OptionPricer<T>, MonteCarloSimulation
+{
 
     private final int n;
     private final int m;
 
-    public MonteCarloOptionPricer(int N, int M) {
+    public MonteCarloOptionPricer(int N, int M)
+    {
         n = N;
         m = M;
     }
 
-    private static double getValue(String type, double underlier, double strike) {
+    private static double getValue(String type, double underlier, double strike)
+    {
         return Option.CALL.equals(type) ? UsefulFunctions.max(underlier - strike, 0) : UsefulFunctions.max(strike - underlier, 0);
     }
 
     @Override
-    public Double valueOf(Option option) {
+    public Double valueOf(Option option)
+    {
         final double s0 = option.getPriceOfUnderlier();
         final double deltaT = option.getTimeToMaturity() / N();
         final double volatility = option.getVolatility();
@@ -47,12 +50,14 @@ public class MonteCarloOptionPricer<T extends Option> implements OptionPricer<T>
     }
 
     @Override
-    public int N() {
+    public int N()
+    {
         return this.n;
     }
 
     @Override
-    public int M() {
+    public int M()
+    {
         return this.m;
     }
 

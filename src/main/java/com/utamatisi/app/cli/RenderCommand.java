@@ -11,27 +11,27 @@ import net.sourceforge.argparse4j.inf.Subparser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class RenderCommand extends ConfiguredCommand<DropwizardConfiguration> {
+public class RenderCommand extends ConfiguredCommand<DropwizardConfiguration>
+{
+
     private static final Logger LOGGER = LoggerFactory.getLogger(RenderCommand.class);
 
-    public RenderCommand() {
+    public RenderCommand()
+    {
         super("render", "Render the template data to console");
     }
 
     @Override
-    public void configure(Subparser subparser) {
+    public void configure(Subparser subparser)
+    {
         super.configure(subparser);
-        subparser.addArgument("-i", "--include-default")
-                 .action(Arguments.storeTrue())
-                 .dest("include-default")
-                 .help("Also render the template with the default name");
+        subparser.addArgument("-i", "--include-default").action(Arguments.storeTrue()).dest("include-default").help("Also render the template with the default name");
         subparser.addArgument("names").nargs("*");
     }
 
     @Override
-    protected void run(Bootstrap<DropwizardConfiguration> bootstrap,
-                       Namespace namespace,
-                       DropwizardConfiguration configuration) throws Exception {
+    protected void run(Bootstrap<DropwizardConfiguration> bootstrap, Namespace namespace, DropwizardConfiguration configuration) throws Exception
+    {
         final Template template = configuration.buildTemplate();
 
         if (namespace.getBoolean("include-default")) {

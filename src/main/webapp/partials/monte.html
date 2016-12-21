@@ -20,11 +20,11 @@
         </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="montee in lineChartYData">
-                <td>{{montee.name}}</td>
-                <td ng-repeat="m in montee.data track by $index">{{m | number : 4}}</td>
-            </tr>
+        <tr ng-repeat="montee in lineChartYData">
+            <td>{{montee.name}}</td>
+            <td ng-repeat="m in montee.data track by $index">{{m | number : 4}}</td>
+        </tr>
         </tbody>
     </table>
-    </div>
+</div>
 </div>

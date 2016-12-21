@@ -17,28 +17,34 @@ import java.util.List;
  */
 @Path("/portfolios")
 @Produces(MediaType.APPLICATION_JSON)
-public class PortfolioResource {
+public class PortfolioResource
+{
+
     private final PortfolioDAO portfolioDAO;
 
-    public PortfolioResource(PortfolioDAO portfolioDAO) {
+    public PortfolioResource(PortfolioDAO portfolioDAO)
+    {
         this.portfolioDAO = portfolioDAO;
     }
 
     @GET
     @UnitOfWork
-    public List<Portfolio> listPortfolios() {
+    public List<Portfolio> listPortfolios()
+    {
         return portfolioDAO.findAll();
     }
 
     @POST
     @UnitOfWork
-    public Portfolio createPortfolio(Portfolio portfolio) {
+    public Portfolio createPortfolio(Portfolio portfolio)
+    {
         return portfolioDAO.create(portfolio);
     }
+
     @DELETE
     @Produces(MediaType.APPLICATION_JSON)
     @UnitOfWork
-    public Response deletePortfolio(@QueryParam("id")LongParam id)
+    public Response deletePortfolio(@QueryParam("id") LongParam id)
     {
         portfolioDAO.delete(id.get());
         return Response.ok().build();
