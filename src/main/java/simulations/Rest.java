@@ -4,7 +4,7 @@ package simulations;
  * Created by titus.chirchir12 on 11/28/2016.
  */
 
-import com.utamatisi.app.models.domain.Stock;
+import app.models.domain.Stock;
 
 import javax.ws.rs.client.ClientBuilder;
 import java.io.IOException;
