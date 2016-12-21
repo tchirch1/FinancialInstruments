@@ -17,21 +17,19 @@ public class GenericDAO<M extends MilestonedObject> extends AbstractDAO<M> imple
     @Override
     public String getTableName()
     {
-        return null;
+        throw new RuntimeException("Please ensure this is implemented in the DAO class.");
     }
 
     @Override
     public M create(M object)
     {
-        M persist = persist(object);
-        return persist;
+        return persist(object);
     }
 
     @Override
     public List<M> findAll()
     {
-        List<M> objects = list(namedQuery(getTableName() + ".findAll"));
-        return objects;
+        return list(namedQuery(getTableName() + ".findAll"));
     }
 
     @Override

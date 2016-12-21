@@ -1,7 +1,6 @@
 package com.utamatisi.app.client;
 
 import com.codahale.metrics.health.HealthCheck;
-import com.utamatisi.app.cli.RenderCommand;
 import com.utamatisi.app.models.domain.Portfolio;
 import com.utamatisi.app.models.domain.Stock;
 import com.utamatisi.app.models.domain.Todo;
@@ -77,7 +76,6 @@ public class DropwizardGateway extends Application<DropwizardConfiguration>
     {
         bootstrap.setConfigurationSourceProvider(new SubstitutingSourceProvider(bootstrap.getConfigurationSourceProvider(), new EnvironmentVariableSubstitutor(false)));
 
-        bootstrap.addCommand(new RenderCommand());
         bootstrap.addBundle(new AssetsBundle());
         bootstrap.addBundle(new MigrationsBundle<DropwizardConfiguration>()
         {

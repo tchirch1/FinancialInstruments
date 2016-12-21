@@ -1,19 +1,14 @@
 package com.utamatisi.app.client;
 
-import com.utamatisi.app.auth.ExampleAuthenticator;
-import com.utamatisi.app.auth.ExampleAuthorizer;
 import com.utamatisi.app.db.PortfolioDAO;
 import com.utamatisi.app.db.StockDAO;
 import com.utamatisi.app.db.TodoDAO;
-import com.utamatisi.app.filter.DateRequiredFeature;
 import com.utamatisi.app.models.User;
 import com.utamatisi.app.resources.MonteCarloResource;
 import com.utamatisi.app.resources.PortfolioResource;
 import com.utamatisi.app.resources.StockResource;
 import com.utamatisi.app.resources.TodoResource;
-import io.dropwizard.auth.AuthDynamicFeature;
 import io.dropwizard.auth.AuthValueFactoryProvider;
-import io.dropwizard.auth.basic.BasicCredentialAuthFilter;
 import io.dropwizard.hibernate.HibernateBundle;
 import io.dropwizard.jersey.setup.JerseyEnvironment;
 import io.dropwizard.setup.Environment;
@@ -38,8 +33,6 @@ public class ResourceRegister
 
     public static void registerResources(JerseyEnvironment jersey)
     {
-        jersey.register(DateRequiredFeature.class);
-        jersey.register(new AuthDynamicFeature(new BasicCredentialAuthFilter.Builder<User>().setAuthenticator(new ExampleAuthenticator()).setAuthorizer(new ExampleAuthorizer()).setRealm("SUPER SECRET STUFF").buildAuthFilter()));
         jersey.register(new AuthValueFactoryProvider.Binder<>(User.class));
         jersey.register(RolesAllowedDynamicFeature.class);
     }

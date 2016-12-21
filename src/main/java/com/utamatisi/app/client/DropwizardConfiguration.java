@@ -16,12 +16,6 @@ import java.util.Map;
 public class DropwizardConfiguration extends Configuration
 {
 
-    @NotEmpty
-    private String template;
-
-    @NotEmpty
-    private String defaultName = "Stranger";
-
     @Valid
     @NotNull
     private DataSourceFactory database = new DataSourceFactory();
@@ -31,35 +25,6 @@ public class DropwizardConfiguration extends Configuration
 
     @Valid
     private GraphiteReporterFactory graphiteReporterFactory = new GraphiteReporterFactory();
-
-    @JsonProperty
-    public String getTemplate()
-    {
-        return template;
-    }
-
-    @JsonProperty
-    public void setTemplate(String template)
-    {
-        this.template = template;
-    }
-
-    @JsonProperty
-    public String getDefaultName()
-    {
-        return defaultName;
-    }
-
-    @JsonProperty
-    public void setDefaultName(String defaultName)
-    {
-        this.defaultName = defaultName;
-    }
-
-    public Template buildTemplate()
-    {
-        return new Template(template, defaultName);
-    }
 
     @JsonProperty("database")
     public DataSourceFactory getDataSourceFactory()
@@ -92,7 +57,7 @@ public class DropwizardConfiguration extends Configuration
     @JsonProperty("metrics")
     public GraphiteReporterFactory getGraphiteReporterFactory()
     {
-        return graphiteReporterFactory;
+        return this.graphiteReporterFactory;
     }
 
     @JsonProperty("metrics")
