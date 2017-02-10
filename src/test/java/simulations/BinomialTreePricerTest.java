@@ -18,7 +18,7 @@ public class BinomialTreePricerTest
     public void price()
     {
         BinomialTreePricer bin = new BinomialTreePricer(23.0, 20.0, 2);
-        Assert.assertEquals(Double.valueOf(23.0), bin.valueOf(null));
+        Assert.assertEquals(Double.valueOf(60.0), bin.valueOf(null));
     }
 
 }
